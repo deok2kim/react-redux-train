@@ -3,13 +3,22 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import "./exercise";
+
+// 4. 스토어 만들기
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import rootReducer from "./modules";
+
+const store = createStore(rootReducer);
+// console.log(store.getState()); // 상태 확인
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+// 프로바이더로 감싸면 모든 컴포넌트에서 리덕스 스토어에 접근할 수 있게 된다.
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
