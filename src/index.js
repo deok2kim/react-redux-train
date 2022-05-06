@@ -9,7 +9,10 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./modules";
 
-const store = createStore(rootReducer);
+// 6. 리덕스 개발자도구
+import { composeWithDevTools } from "redux-devtools-extension";
+
+const store = createStore(rootReducer, composeWithDevTools()); // 개발자도구 활성화
 // console.log(store.getState()); // 상태 확인
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
